@@ -13,7 +13,7 @@ function leftClass() {
 }
 
 function rightClass() {
-    if(i < 2) {
+    if(i < classes.length - 1) {
         i++;
         classHero.src = `${classes[i]}.jpg`;
     } 
