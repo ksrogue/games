@@ -1,3 +1,6 @@
+let win = 75;
+let lose = 8;
+
 function winLose(win, lose) {
   let resultado = win - lose;
 
@@ -27,7 +30,7 @@ function rank(resultado) {
 }
 
 console.log(
-  `O herói tem de saldo ${winLose(75, 8)} e está no rank de ${rank(
-    winLose(75, 8)
+  `O herói tem de saldo ${winLose(win, lose)} e está no rank de ${rank(
+    winLose(win, lose)
   )}`
 );
