@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", sans-serif;
+  user-select: none;
+}
+
+body {
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  width: 100%;
+  margin: 8px auto;
+  border-color: gold;
+}
+
+.battle-screen {
+  width: 720px;
+  height: 480px;
+  background-image: url(./img/battleback.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.status {
+  width: 75%;
+  height: 64px;
+  background: linear-gradient(180deg, #0000ff 30%, #0000bc 60%, #000093 100%);
+  color: gold;
+  border: 1px solid gold;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 1px 2px 3px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.monster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 64px;
+}
+.monster-hp {
+  display: block;
+  color: #fff;
+  text-shadow: 2px 1px 1px black;
+}
+.monster-sprite img {
+  width: 100px;
+  margin: 16px;
+}
+
+.player {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.player-commands {
+  border: 1px solid gold;
+  background: linear-gradient(180deg, #0000ff 30%, #0000bc 60%, #000093 100%);
+  width: 40%;
+  height: 112px;
+  display: flex;
+}
+
+.player-status {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.player-face {
+  width: 96px;
+  background: linear-gradient(180deg, #ffd700 30%, #bca000 60%, rgb(147, 125, 0) 100%);
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  margin: 8px;
+}
+.player-gauges {
+  margin-top: 10px;
+  margin-left: 6px;
+  color: gold;
+  text-shadow: 1px 2px 3px #000;
+  font-size: 14px;
+}
+.player-hp {
+  margin-bottom: 8px;
+}
+.btn {
+  background-color: gold;
+  color: #000;
+  margin: 8px 8px 0 5px;
+  padding: 5px 3px;
+  text-align: center;
+  text-shadow: none;
+  border: 1px solid black;
+  font-size: 12px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  transition: all ease .5s;
+}
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
