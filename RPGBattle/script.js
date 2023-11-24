@@ -20,22 +20,31 @@ const monster = {
 };
 
 let playerTurn = false;
+let canAttack = false;
 
 function battleStart() {
   // inicia o combate;
   setTimeout(() => {
     playerTurn = true;
+    canAttack = true;
     checkTurn();
   }, 1000);
 }
 
 // ataque do jogador;
 function atacar() {
-  if (playerTurn) {
+  if (playerTurn && canAttack) {
     if (player.hp > 0 && monster.hp > 0) {
       monster.hp -= player.atk;
-      monsterHp.innerHTML = `${monster.hp}/125`;
+
+      if (monster.hp > 0) {
+        monsterHp.innerHTML = `${monster.hp}/125`;
+      } else {
+        monsterHp.innerHTML = "0/125";
+      }
+
       battleStatus.innerHTML = `O jogador atacou causando ${player.atk} de dano!`;
+      canAttack = false;
 
       setTimeout(() => {
         playerTurn = false;
@@ -51,10 +60,17 @@ function atacar() {
 function monsterTurn() {
   if (monster.hp > 0 && player.hp > 0) {
     player.hp -= monster.atk;
-    playerHp.innerHTML = `HP: ${player.hp}/100`;
+
+    if (player.hp > 0) {
+      playerHp.innerHTML = `HP: ${player.hp}/100`;
+    } else {
+      playerHp.innerHTML = "HP: 0/100";
+    }
+
     battleStatus.innerHTML = `O inimigo atacou causando ${monster.atk} de dano ao jogador!`;
 
     setTimeout(() => {
+      canAttack = true;
       playerTurn = true;
       checkTurn();
     }, 2000);
@@ -67,12 +83,20 @@ function monsterTurn() {
 function checkTurn() {
   if (playerTurn) {
     // se for a vez do jogador;
-    battleStatus.innerHTML = "É a sua vez de atacar!";
-    playerBtn.style.backgroundColor = "gold";
+    if (player.hp > 0) {
+      battleStatus.innerHTML = "É a sua vez de atacar!";
+      playerBtn.style.backgroundColor = "gold";
+    } else {
+      gameOver();
+    }
   } else {
     // se for a vez do inimigo;
-    battleStatus.innerHTML = "É a vez do inimigo atacar!";
-    playerBtn.style.backgroundColor = "gray";
+    if (monster.hp > 0) {
+      battleStatus.innerHTML = "É a vez do inimigo atacar!";
+      playerBtn.style.backgroundColor = "gray";
+    } else {
+      gameOver();
+    }
 
     setTimeout(() => {
       monsterTurn();
@@ -88,8 +112,9 @@ function gameOver() {
     playerHp.innerHTML = `HP: ${player.hp}/100`;
     battleStatus.innerHTML = "Você foi derrotado!";
   } else if (monster.hp <= 0) {
-    monster.hp <= 0;
-    monsterHp.innerHTML = `${monster.hp}/125`;
+    monster.hp = 0;
+    monsterHp.innerHTML = "";
+    monsterSprite.style.display = "none";
     battleStatus.innerHTML = "Parabéns, você venceu a batalha!";
   }
 }
